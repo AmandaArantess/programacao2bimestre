@@ -24,7 +24,6 @@
 
             <div id="centro">
                     <h2 style="color:white ; background-color:#333 ">Bem vindo à melhor confeitaria do IF-Sudeste MG!</h2>
-                   <h1>aaaaaaaaa</h1>
             </div>
 </div>
 </body>
