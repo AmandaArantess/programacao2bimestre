@@ -17,7 +17,6 @@
 <body>
 
 <div id="tudo" >
-    
 
         <?php require_once('funcoes/cabecalho.php'); ?>
         
