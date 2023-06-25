@@ -27,12 +27,6 @@
                     <h2 style="color:white ; background-color:#333 ">Bem vindo à melhor confeitaria do IF-Sudeste MG!</h2>
                    
             </div>
-      
-
-        
-
-   
-   
 </div>
 </body>
 </html>
