@@ -18,9 +18,9 @@
 
 <div id="tudo" >
 
-        <?php require_once('funcoes/cabecalho.php'); ?>
+        <?php require_once('./funcoes/cabecalho.php'); ?>
         
-            <?php require_once ('funcoes/menu.php');?>
+            <?php require_once ('./funcoes/menu.php');?>
 
             <div id="centro">
                     <h2 style="color:white ; background-color:#333 ">Bem vindo à melhor confeitaria do IF-Sudeste MG!</h2>

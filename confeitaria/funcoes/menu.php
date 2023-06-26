@@ -45,7 +45,15 @@
 <div class="active">
       
  <div class="dropdown">
- <span role="button" data-bs-toggle="dropdown"><a class="active" href="index.php">Home</a></span>
+ <span role="button" data-bs-toggle="dropdown"><a  href="index.php">Home</a></span>
+</div>
+
+<div class="dropdown">
+ <span role="button" data-bs-toggle="dropdown"><a  href="./usuarioEntrar.php">Entrar</a></span>
+</div>
+
+<div class="dropdown">
+ <span role="button" data-bs-toggle="dropdown"><a  href="./usuarioCadastrar.php">Cadastrar</a></span>
 </div>
 
 <div class="dropdown">
