@@ -51,19 +51,19 @@ INSERT INTO `ambrosias_produtos` (`codProduto`, `nomeProduto`, `precoProduto`, `
 
 DROP TABLE IF EXISTS `ambrosias_receitas`;
 CREATE TABLE IF NOT EXISTS `ambrosias_receitas` (
-  `codigo` int NOT NULL,
-  `nome_receita` varchar(30) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
+  `codReceita` int NOT NULL,
+  `nomeReceita` varchar(30) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
   `ingredientes` text CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
   `preparo` text CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
   `comentarios` text CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
-  PRIMARY KEY (`codigo`)
+  PRIMARY KEY (`codReceita`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
 -- Extraindo dados da tabela `ambrosias_receitas`
 --
 
-INSERT INTO `ambrosias_receitas` (`codigo`, `nome_receita`, `ingredientes`, `preparo`, `comentarios`) VALUES
+INSERT INTO `ambrosias_receitas` (`codReceita`, `nomeReceita`, `ingredientes`, `preparo`, `comentarios`) VALUES
 (1, 'brigadeiro', 'chocolate 50 por cento\r\nleite condensado\r\ncreme de leite\r\ngranulado\r\nforminhas de papel', 'Adicione o leite condensdo, o creme de leite e o chocolate na panela, mexa até desgrudar. \r\nReserve.\r\nApós esfriar, separe 35g do brigadeiro, o enrole e passe no granulado. Coloque-o na forma e está pronto!\r\n', 'campeão de vendas!');
 COMMIT;
 
