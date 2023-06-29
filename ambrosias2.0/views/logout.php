@@ -8,5 +8,5 @@
     session_destroy();
 
     // redireciona o link para a página de aviso de erro ao autenticar usuário
-    header("Location: usuarioLogin.php");
+    header("Location: funcionarioLogin.php");
 ?>

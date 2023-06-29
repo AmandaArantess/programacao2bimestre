@@ -1,13 +1,16 @@
 <!doctype html>
 <?php include("checarLogin.php") ?>
 <html lang="pt-br">
+    <header>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    </header>
     <body>
         <?php require_once './menu.php' ?>
 
         <?php 
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                require_once '../models/funcionario.php';
-                require_once '../daos/funcionarioDAO.php';
+                require_once '../models/receita.php';
+                require_once '../daos/receitaDAO.php';
 
                 $mensagensErro = false;
 
@@ -23,18 +26,20 @@
                     }
                     else {
                         //Instancia uma nova receita
-                        $obj = new Aluno();
+                        $obj = new Receita();
 
-                        $obj->id=$_POST["id"];
-                        $obj->nome=$_POST["nome"];
-                        $obj->whatsapp=$_POST["whatsapp"];
-                        $obj->dias_contratados=$diasContratados;
+                        $obj->codReceita=$_POST["codReceita"];
+                        $obj->nomeReceita=$_POST["nomeReceita"];
+                        $obj->ingredientes=$_POST["ingredientes"];
+                        $obj->preparo=$_POST["preparo"];
+                        $obj->comentarios=$_POST["comentarios"];
+                        
 
-                        $dao = new alunoDAO();
+                        $dao = new receitaDAO();
 
                         $dao->alterar($obj);
 
-                        header('Location: ./alunoListar.php');
+                        header('Location: ./receitaListar.php');
                     }
 
                     if ($mensagensErro) {
@@ -48,19 +53,21 @@
 
         <form class="m-3" action="alunoAlterar.php" name="formulario_postado" method="post">            
             <?php
-                require_once "../DAOs/alunoDAO.php";
+                require_once "../DAOs/receitaDAO.php";
                 require_once "./controles.php";
 
                 $id = $_GET["id"];
 
-                $dao = new alunoDAO();
+                $dao = new receitaDAO();
 
                 $obj = $dao->retornarPorId($id);
                 
                 if ($obj) {
-                    input('nome', 'Nome', $obj->nome, false, "text");
-                    input('whatsapp', 'Whatsapp', $obj->whatsapp, false, "text");
-                    input('dias_contratados', 'Dias contratados', $obj->dias_contratados, false, "number");
+                    input('codReceita', 'Codigo Receita', $obj->codReceita, true, "text");
+                    input('nomeReceita', 'Nome Receita', $obj->nomeReceita, true, "text");
+                    input('ingredientes', 'Ingredientes', $obj->ingredientes, true, "text");
+                    input('preparo', 'Preparo', $obj->preparo, true, "text");
+                    input('comentarios', 'Comentarios', $obj->comentarios, true, "text");
                 }
                 else {
                     echo "<p>Aluno não encontrado.</p>";

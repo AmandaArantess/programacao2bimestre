@@ -1,26 +1,16 @@
 <!doctype html>
 <?php include("checarLogin.php") ?>
 <html lang="pt-br">
+    <header>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    </header>
     <body>
         <?php require_once './menu.php' ?>
 
-        <?php 
-            if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                include_once '../daos/alunoDAO.php';
+        <h2>Consultando Aluno</h2>
 
-                $id=$_POST["id"];
-                
-                $dao = new alunoDAO();
-
-                $dao->excluir($id);
-
-                header('Location: ./alunoListar.php');
-            }
-        ?>
-
-        <h2>Excluindo Aluno</h2>
-
-        <form class="m-3" action="alunoExcluir.php" name="formulario_postado" method="post">            <?php
+        <form class="m-3">
+            <?php
                 require "../DAOs/alunoDAO.php";
                 require "./controles.php";
 
@@ -31,17 +21,17 @@
                 $obj = $dao->retornarPorId($id);
                 
                 if ($obj) {
-                    input('nome', 'Nome', $obj->nome, true, "text");
-                    input('whatsapp', 'Whatsapp', $obj->whatsapp, true, "text");
+                    input('codProduto', 'Codigo Produto', '', false, "text");
+                    input('nomeProduto', 'Nome Produto', '', false, "text");
+                    input('precoProduto', 'Preço Produto', '', false, "text");
+                    input('pesoProduto', 'Peso Produto', '', false, "text");
+                    input('descricaoProduto', 'Descrição Produto', '', false, "text");
                 }
                 else {
                     echo "<p>Aluno não encontrado.</p>";
                 }
-
-                echo '<input type="hidden" name="id" value="' . $id . '">';
                 
             ?>
-            <button class="btn btn-danger">Excluir</button>
             <a class="btn btn-secondary" href="./alunoListar.php">Voltar</a>
         </form>
 

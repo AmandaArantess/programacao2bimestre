@@ -7,30 +7,34 @@
     <body>
         <?php require_once './menu.php' ?>
 
-        <h2>Consultando Aluno</h2>
+        <h2>Consultando receita</h2>
 
         <form class="m-3">
             <?php
-                require "../DAOs/alunoDAO.php";
+                require "../DAOs/receitaDAO.php";
                 require "./controles.php";
 
                 $id = $_GET["id"];
 
-                $dao = new alunoDAO();
+                $dao = new receitaDAO();
 
                 $obj = $dao->retornarPorId($id);
                 
                 if ($obj) {
-                    input('nome', 'Nome', $obj->nome, true, "text");
-                    input('whatsapp', 'Whatsapp', $obj->whatsapp, true, "text");
-                    input('dias_contratados', 'Dias contratados', $obj->dias_contratados, true, "number");
+                    input('codReceita', 'Codigo Receita', $obj->codReceita, true, "text");
+                    input('nomeReceita', 'Nome Receita', $obj->nomeReceita, true, "text");
+                    input('ingredientes', 'Ingredientes', $obj->ingredientes, true, "text");
+                    input('preparo', 'Preparo', $obj->preparo, true, "text");
+                    input('comentarios', 'Comentarios', $obj->comentarios, true, "text");
+
+                    
                 }
                 else {
-                    echo "<p>Aluno não encontrado.</p>";
+                    echo "<p>receita não encontrada.</p>";
                 }
                 
             ?>
-            <a class="btn btn-secondary" href="./alunoListar.php">Voltar</a>
+            <a class="btn btn-secondary" href="./receitaListar.php">Voltar</a>
         </form>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>

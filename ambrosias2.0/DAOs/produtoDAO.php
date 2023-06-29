@@ -52,7 +52,7 @@
             $stmt->execute();
         }
 
-        public function retornarPorcodProduto(string $codProduto) {
+        public function retornarPorid(string $codProduto) {
             require_once 'conexao_bd.php';
             require_once '../Models/funcionario.php';
             
