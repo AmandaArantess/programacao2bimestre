@@ -40,6 +40,7 @@
                 input('email', 'E-mail', '', false, "text");
                 input('senha', 'Senha', '', false, "password");
             ?>
+          
             <button class="btn btn-success">Logar</button>
             <a class="btn btn-secondary" href="./index.php">Voltar para o menu</a>
         </form>
