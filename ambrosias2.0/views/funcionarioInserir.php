@@ -7,12 +7,12 @@
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 include_once '../models/receitaDAO.php';
                 include_once '../models/produtoDAO.php';
-                include_once '../daos/funcionarioDAO.php';
+                include_once '../DAOs/funcionarioDAO.php';
 
                 $email=$_POST["email"];
                 $senha=$_POST["senha"];
 
-                $dao = new funcionarioDAO();
+                $dao = new FuncionarioDAO();
 
                 $dao->inserir($email, $senha);
 

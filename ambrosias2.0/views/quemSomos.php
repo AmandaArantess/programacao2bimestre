@@ -18,9 +18,9 @@
 <body>
  
     <div>
-    <?php require_once('funcoes/cabecalho.php'); ?>
+    <?php require_once('./cabecalho.php'); ?>
         
-        <?php require_once ('funcoes/menu.php');?>
+        <?php require_once ('./menu.php');?>
 
 
         <div id="centro2">
