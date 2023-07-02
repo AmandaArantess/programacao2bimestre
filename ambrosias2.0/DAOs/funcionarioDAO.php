@@ -23,10 +23,11 @@
                 $funcionario->id = $row['id'];
                 $funcionario->email = $row['email'];
                 $funcionario->nome = $row['nome'];
+                $funcionario->salt = $row['salt'];
                 $funcionario->hash_senha = $row['hash_senha'];
 
-                if (Bcrypt($senha, $funcionario->nome) == $funcionario->hash_senha) {
-                    $funcionario->nome = "";
+                if (Bcrypt($senha, $funcionario->salt) == $funcionario->hash_senha) {
+                    $funcionario->salt = "";
                     $funcionario->hash_senha = "";
 
                     return $funcionario;
@@ -43,23 +44,25 @@
             require_once '../models/funcionario.php';
             require_once '../Helpers/funcoes.php';
     
-            $stmt = $conn->prepare('INSERT INTO  tb_funcionario (id,email,nome,hash_senha) 
+            $stmt = $conn->prepare('INSERT INTO  tb_funcionario (id,email,nome,salt,hash_senha) 
             values 
-            (:id,:email,:nome,:hash_senha)');
+            (:id,:email,:nome,:salt,:hash_senha)');
             
             $obj = new funcionario();
 
             if (!$obj->id)
                 $obj->id = GUID();
 
-            $obj->nome = GUID();
+            $obj->salt = GUID();
 
             $obj->email = $email;
-            $obj->hash_senha = Bcrypt($senha, $obj->nome);
+            $obj->nome = $nome;
+            $obj->hash_senha = Bcrypt($senha, $obj->salt);
 
             $stmt->bindValue(':id', $obj->id);
             $stmt->bindValue(':email', $obj->email);
             $stmt->bindValue(':nome', $obj->nome);
+            $stmt->bindValue(':salt', $obj->salt);
             $stmt->bindValue(':hash_senha', $obj->hash_senha);
             
             $stmt->execute();
@@ -71,13 +74,15 @@
     
             $stmt = $conn->prepare('UPDATE tb_funcionario SET
                 email =:email,
-                nome = :nome, 
+                nome = :nome,
+                salt = :salt, 
                 hash_senha = :hash_senha 
                  WHERE id = :id');
             
             $stmt->bindValue(':id', $obj->id);
             $stmt->bindValue(':email', $obj->email);
             $stmt->bindValue(':nome', $obj->nome);
+            $stmt->bindValue(':salt', $obj->salt);
             $stmt->bindValue(':hash_senha', $obj->hash_senha);
             
             $stmt->execute();
@@ -113,7 +118,7 @@
 
                 $obj->id = $row['id'];
                 $obj->email = $row['email'];
-                //$obj->nome = $row['nome'];
+                //$obj->salt = $row['salt'];
                 //$obj->hash_senha = $row['hash_senha'];
             }
             
@@ -141,6 +146,7 @@
                 $obj->id = $row['id'];
                 $obj->email = $row['email'];
                 $obj->nome = $row['nome'];
+                $obj->salt = $row['salt'];
                 $obj->hash_senha = $row['hash_senha'];
             }
             
