@@ -5,8 +5,10 @@
             require 'conexao_bd.php';
             require_once '../models/funcionario.php';
             require_once '../Helpers/funcoes.php';
+            
+        
 
-            $sql = "SELECT * FROM tb_funcionario where  email=? LIMIT 1";
+            $sql = "SELECT * FROM ambrosias_funcionarios where  email=? LIMIT 1";
     
             $stmt = $conn->prepare($sql); 
             $stmt->execute([$email]); 
@@ -22,7 +24,7 @@
 
                 $funcionario->id = $row['id'];
                 $funcionario->email = $row['email'];
-                $funcionario->nome = $row['nome'];
+         
                 $funcionario->salt = $row['salt'];
                 $funcionario->hash_senha = $row['hash_senha'];
 
@@ -44,9 +46,9 @@
             require_once '../models/funcionario.php';
             require_once '../Helpers/funcoes.php';
     
-            $stmt = $conn->prepare('INSERT INTO  tb_funcionario (id,email,nome,salt,hash_senha) 
+            $stmt = $conn->prepare('INSERT INTO  ambrosias_funcionarios (id,email,salt,hash_senha) 
             values 
-            (:id,:email,:nome,:salt,:hash_senha)');
+            (:id,:email,:salt,:hash_senha)');
             
             $obj = new funcionario();
 
@@ -56,12 +58,12 @@
             $obj->salt = GUID();
 
             $obj->email = $email;
-            $obj->nome = $nome;
+         
             $obj->hash_senha = Bcrypt($senha, $obj->salt);
 
             $stmt->bindValue(':id', $obj->id);
             $stmt->bindValue(':email', $obj->email);
-            $stmt->bindValue(':nome', $obj->nome);
+         
             $stmt->bindValue(':salt', $obj->salt);
             $stmt->bindValue(':hash_senha', $obj->hash_senha);
             
@@ -72,16 +74,16 @@
             require_once 'conexao_bd.php';
             require_once '../models/funcionario.php';
     
-            $stmt = $conn->prepare('UPDATE tb_funcionario SET
+            $stmt = $conn->prepare('UPDATE ambrosias_funcionarios SET
                 email =:email,
-                nome = :nome,
+                
                 salt = :salt, 
                 hash_senha = :hash_senha 
                  WHERE id = :id');
             
             $stmt->bindValue(':id', $obj->id);
             $stmt->bindValue(':email', $obj->email);
-            $stmt->bindValue(':nome', $obj->nome);
+        
             $stmt->bindValue(':salt', $obj->salt);
             $stmt->bindValue(':hash_senha', $obj->hash_senha);
             
@@ -91,7 +93,7 @@
         public function excluir($id) {
             require_once 'conexao_bd.php';
             
-            $stmt = $conn->prepare('DELETE FROM  tb_funcionario WHERE id = :id');
+            $stmt = $conn->prepare('DELETE FROM  ambrosias_funcionarios WHERE id = :id');
             
             $stmt->bindValue(':id', $id);
             
@@ -102,7 +104,7 @@
             require_once 'conexao_bd.php';
             require_once '../Models/funcionario.php';
             
-            $sql = "SELECT * FROM tb_funcionario where  id=? LIMIT 1";
+            $sql = "SELECT * FROM ambrosias_funcionarios where  id=? LIMIT 1";
     
             $stmt = $conn->prepare($sql); 
             $stmt->execute([$id]); 
@@ -129,7 +131,7 @@
             require_once 'conexao_bd.php';
             require_once '../Models/funcionario.php';
             
-            $sql = "SELECT * FROM tb_funcionario where  email=? LIMIT 1";
+            $sql = "SELECT * FROM ambrosias_funcionarios where  email=? LIMIT 1";
     
             $stmt = $conn->prepare($sql); 
             $stmt->execute([$email]); 
@@ -145,7 +147,7 @@
 
                 $obj->id = $row['id'];
                 $obj->email = $row['email'];
-                $obj->nome = $row['nome'];
+      
                 $obj->salt = $row['salt'];
                 $obj->hash_senha = $row['hash_senha'];
             }

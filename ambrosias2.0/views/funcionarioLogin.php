@@ -13,7 +13,7 @@
                 $email=$_POST["email"];
                 $senha=$_POST["senha"];
 
-                $dao = new FuncionarioDAO();
+                $dao = new funcionarioDAO();
                 
                 $login = $dao->login($email, $senha);
 

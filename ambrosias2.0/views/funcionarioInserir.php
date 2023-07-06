@@ -5,8 +5,7 @@
 
         <?php 
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                include_once '../models/receitaDAO.php';
-                include_once '../models/produtoDAO.php';
+                
                 include_once '../DAOs/funcionarioDAO.php';
 
                 $email=$_POST["email"];

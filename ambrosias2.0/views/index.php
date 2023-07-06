@@ -7,13 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <style>
-        body{
-            background-image: url(img/padaria.png);
-          
-        }
+        
     </style>
 </head>
     <body>
+       
     <div id="tudo" >
         <?php require_once('./cabecalho.php'); ?>
         <?php require_once './menu.php' ?>
@@ -22,6 +20,7 @@
                     <h2 style="color:white ; background-color:#333 ">Bem vindo à melhor confeitaria do IF-Sudeste MG!</h2>
         </div>
     </div>
+
     </body>
 </html>
 
