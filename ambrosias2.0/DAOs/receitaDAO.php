@@ -6,11 +6,14 @@
             require_once '../models/funcionario.php';
             require_once '../Helpers/funcoes.php';
     
-            $stmt = $conn->prepare('INSERT INTO  ambrosias_receita (codReceita,nomeReceita,ingredientes,preparo,comentarios) 
+            $stmt = $conn->prepare('INSERT INTO  ambrosias_receitas (idReceita,nomeReceita,ingredientes,preparo,comentarios) 
             values 
-            (:codReceita,:nomeReceita,:ingredientes,:preparo,:comentarios)');
+            (:idReceita,:nomeReceita,:ingredientes,:preparo,:comentarios)');
 
-            $stmt->bindValue(':codReceita', $obj->codReceita);
+                if (!$obj->idReceita)
+                $obj->idReceita = GUidReceita();
+
+            $stmt->bindValue(':idReceita', $obj->idReceita);
             $stmt->bindValue(':nomeReceita', $obj->nomeReceita);
             $stmt->bindValue(':ingredientes', $obj->ingredientes);
             $stmt->bindValue(':preparo', $obj->preparo);
@@ -23,15 +26,15 @@
             require_once 'conexao_bd.php';
             require_once '../models/funcionario.php';
     
-            $stmt = $conn->prepare('UPDATE ambrosias_receita SET
+            $stmt = $conn->prepare('UPDATE ambrosias_receitas SET
                 nomeReceita =:nomeReceita,
                 ingredientes = :ingredientes, 
                 preparo = :preparo,
                 comentarios = :comentarios
-                 WHERE codReceita = :codReceita');
+                 WHERE idReceita = :idReceita');
             
-            $stmt->bindValue(':codReceitas', $obj->codReceita);
-            $stmt->bindValue(':nomeReceitas', $obj->nomeReceita);
+            $stmt->bindValue(':idReceita', $obj->idReceita);
+            $stmt->bindValue(':nomeReceita', $obj->nomeReceita);
             $stmt->bindValue(':ingredientes', $obj->ingredientes);
             $stmt->bindValue(':preparo', $obj->preparo);
             $stmt->bindValue(':comentarios', $obj->comentarios);
@@ -39,35 +42,35 @@
             $stmt->execute();
         }
 
-        public function excluir($codReceita) {
+        public function excluir($idReceita) {
             require_once 'conexao_bd.php';
             
-            $stmt = $conn->prepare('DELETE FROM ambrosias_receita WHERE codReceita = :codReceita');
+            $stmt = $conn->prepare('DELETE FROM ambrosias_receitas WHERE idReceita = :idReceita');
             
-            $stmt->bindValue(':codReceitas', $codReceitas);
+            $stmt->bindValue(':idReceita', $idReceita);
             
             $stmt->execute();
         }
 
-        public function retornarPorId(string $codReceita) {
+        public function retornarPoridReceita(string $idReceita) {
             require_once 'conexao_bd.php';
             require_once '../Models/funcionario.php';
             
-            $sql = "SELECT * FROM ambrosias_receitas where codReceitas=? LIMIT 1";
+            $sql = "SELECT * FROM ambrosias_receitas where idReceita=? LIMIT 1";
     
             $stmt = $conn->prepare($sql); 
-            $stmt->execute([$codReceita]); 
+            $stmt->execute([$idReceita]); 
             $row = $stmt->fetch();
             
             //O objeto a ser retornado recebe NULL
             $obj = NULL;
             
-            //Se a consulta por codReceitas retornou algum registro
+            //Se a consulta por idReceita retornou algum registro
             if ($row) {
                 //Instancia uma nova receita e preenche as propriedades da mesma com os valores dos campos retornados
                 $obj = new receita();
 
-                $obj->codReceita = $row['codReceita'];
+                $obj->idReceita = $row['idReceita'];
                 $obj->nomeReceita = $row['nomeReceita'];
                 $obj->ingredientes = $row['ingredientes'];
                 $obj->preparo = $row['preparo'];
@@ -91,7 +94,7 @@
                 //Instancia uma nova receita e preenche as propriedades da mesma com os valores dos campos retornados
                 $obj = new receita();
 
-                $obj->codReceita = $row['codReceita'];
+                $obj->idReceita = $row['idReceita'];
                 $obj->nomeReceita = $row['nomeReceita'];
                 $obj->ingredientes = $row['ingredientes'];
                 $obj->preparo = $row['preparo'];

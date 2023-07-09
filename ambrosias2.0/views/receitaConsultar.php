@@ -14,14 +14,13 @@
                 require "../DAOs/receitaDAO.php";
                 require "./controles.php";
 
-                $id = $_GET["id"];
+                $id = $_GET["codReceita"];
 
                 $dao = new receitaDAO();
 
                 $obj = $dao->retornarPorId($id);
                 
                 if ($obj) {
-                    input('codReceita', 'Codigo Receita', $obj->codReceita, true, "text");
                     input('nomeReceita', 'Nome Receita', $obj->nomeReceita, true, "text");
                     input('ingredientes', 'Ingredientes', $obj->ingredientes, true, "text");
                     input('preparo', 'Preparo', $obj->preparo, true, "text");

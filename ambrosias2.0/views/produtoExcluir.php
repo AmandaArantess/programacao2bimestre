@@ -2,6 +2,7 @@
 <?php include("checarLogin.php") ?>
 <html lang="pt-br">
     <body>
+        <?php require_once './cabecalho.php' ?>
         <?php require_once './menu.php' ?>
 
         <?php 

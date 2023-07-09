@@ -2,6 +2,8 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 <style>
  *{
@@ -39,24 +41,24 @@
 }
 
 </style>
-
 </head>
 <body>
-<div class="active">
+<div class="active" class="container text-center">
+<div class="row">
       
- <div class="dropdown">
+ <div class="col">
  <span role="button" data-bs-toggle="dropdown"><a  href="index.php">Home</a></span>
 </div>
 
-<div class="dropdown">
+<div  class="col" >
  <span role="button" data-bs-toggle="dropdown"><a  href="./funcionarioLogin.php">Entrar</a></span>
 </div>
 
-<div class="dropdown">
+<div  class="col">
  <span role="button" data-bs-toggle="dropdown"><a  href="./funcionarioInserir.php">Cadastrar</a></span>
 </div>
 
-<div class="dropdown">
+<div  class="col">
   <span role="button" data-bs-toggle="dropdown">Inclusão</span>
    <div class="dropdown-content">
   <ul><a href="receitaInserir.php">De receitas</a></ul>
@@ -64,7 +66,7 @@
   </div>
 </div>
 
-<div class="dropdown">
+<div  class="col">
   <span role="button" data-bs-toggle="dropdown">Consulta</span>
    <div class="dropdown-content">
   <ul><a href="receitaConsultar.php">De receitas</a></ul>
@@ -72,7 +74,7 @@
   </div>
   </div>
 
-  <div class="dropdown">
+  <div class="col">
   <span role="button" data-bs-toggle="dropdown">Alteração</span>
    <div class="dropdown-content">
   <ul><a href="receitaAlterar.php">De receitas</a></ul>
@@ -80,7 +82,7 @@
   </div>
 </div>
 
-<div class="dropdown">
+<div class="col">
   <span role="button" data-bs-toggle="dropdown">Exclusão</span>
    <div class="dropdown-content">
   <ul><a href="receitaExcluir.php">De receitas</a></ul>
@@ -88,7 +90,7 @@
   </div>
 </div>
 
-<div class="dropdown">
+<div class="col">
   <span role="button" data-bs-toggle="dropdown">Relatório</span>
    <div class="dropdown-content">
   <ul><a href="receitaListar.php">De receitas</a></ul>
@@ -96,8 +98,9 @@
   </div>
   </div>
  
-  <div class="dropdown">
+  <div class="col">
  <span role="button" data-bs-toggle="dropdown" id="sobre"><a href="quemSomos.php" id="nomes">Quem somos</a></span>
+</div>
 </div>
 </div>
             <?php

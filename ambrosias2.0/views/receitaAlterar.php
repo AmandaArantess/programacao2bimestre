@@ -15,28 +15,19 @@
                 $mensagensErro = false;
 
                 if (!isset($_POST) || empty($_POST)) {
-                    $mensagensErro = "Nada foi postado!";
+                    $mensagensErro = "Nenhuma receita cadastrada!";
                 }
-                else {
-
-                    $diasContratados = $_POST["dias_contratados"];
-
-                    if (!is_numeric($diasContratados)) {
-                        $mensagensErro = "O campo 'Dias Contratados' precisa ser um valor numérico.";
-                    }
                     else {
                         //Instancia uma nova receita
                         $obj = new Receita();
 
-                        $obj->codReceita=$_POST["codReceita"];
+                        $obj->idReceita=$_POST["idReceita"];
                         $obj->nomeReceita=$_POST["nomeReceita"];
                         $obj->ingredientes=$_POST["ingredientes"];
                         $obj->preparo=$_POST["preparo"];
                         $obj->comentarios=$_POST["comentarios"];
-                        
 
                         $dao = new receitaDAO();
-
                         $dao->alterar($obj);
 
                         header('Location: ./receitaListar.php');
@@ -46,34 +37,32 @@
                         header('Location: ./erro.php?mensagem=' . $mensagensErro);
                     }
                 }
-            }
         ?>
 
-        <h2>Alterando Aluno</h2>
+        <h2>Alterando Receita</h2>
 
-        <form class="m-3" action="alunoAlterar.php" name="formulario_postado" method="post">            
+        <form class="m-3" action="receitaAlterar.php" name="formulario_postado" method="post">            
             <?php
                 require_once "../DAOs/receitaDAO.php";
                 require_once "./controles.php";
 
-                $id = $_GET["id"];
+                $idReceita = $_GET["idReceita"];
 
                 $dao = new receitaDAO();
 
-                $obj = $dao->retornarPorId($id);
+                $obj = $dao->retornarPoridReceita($idReceita);
                 
                 if ($obj) {
-                    input('codReceita', 'Codigo Receita', $obj->codReceita, true, "text");
-                    input('nomeReceita', 'Nome Receita', $obj->nomeReceita, true, "text");
-                    input('ingredientes', 'Ingredientes', $obj->ingredientes, true, "text");
-                    input('preparo', 'Preparo', $obj->preparo, true, "text");
-                    input('comentarios', 'Comentarios', $obj->comentarios, true, "text");
+                    input('nomeReceita', 'Nome Receita', $obj->nomeReceita, false, "text");
+                    input('ingredientes', 'Ingredientes', $obj->ingredientes, false, "text");
+                    input('preparo', 'Preparo', $obj->preparo, false, "text");
+                    input('comentarios', 'Comentarios', $obj->comentarios, false, "text");
                 }
                 else {
-                    echo "<p>Aluno não encontrado.</p>";
+                    echo "<p>Receita não encontrado.</p>";
                 }
 
-                echo '<input type="hidden" name="id" value="' . $id . '">';
+                echo '<input type="hidReceitaden" name="idReceita" value="' . $idReceita . '">';
                 
             ?>
             <button class="btn btn-success">Salvar</button>
