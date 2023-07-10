@@ -22,7 +22,7 @@
                     @session_start();
 
                     $_SESSION['login'] = $email;
-                    $_SESSION['idfuncionario'] = $login->id;
+                    $_SESSION['idfuncionario'] = $login->idfuncionario;
                     header('Location: index.php'); 
                 } else {
                     header('Location: ./erro.php?mensagem=Usuário ou senha inválidos!');
@@ -44,6 +44,55 @@
             <button class="btn btn-success">Logar</button>
             <a class="btn btn-secondary" href="./index.php">Voltar para o menu</a>
         </form> 
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    </body>
+</html>
+
+
+
+
+
+
+<!doctype html>
+<html lang="pt-br">
+    <header>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    </header>
+    <body>
+        <?php require_once './menu.php' ?>
+
+        <h2>Login</h2>
+
+        <div class="dropdown-menu">
+  <form class="px-4 py-3" action="funcionarioLogin.php" name="formulario_postado" method="post">
+
+  <?php
+                require "../DAOs/funcionarioDAO.php";
+                require "./controles.php";
+            ?>
+
+    <div class="mb-3">
+      <label class="form-label">Email</label>
+      <input type="email" class="form-control" id="email" placeholder="email@example.com">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Password</label>
+      <input type="password" class="form-control" id="senha" placeholder="senha">
+    </div>
+    <div class="mb-3">
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="dropdownCheck">
+        <label class="form-check-label" for="dropdownCheck">
+          Remember me
+        </label>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Logar</button>
+  </form>
+  <div class="dropdown-divider"></div>
+  <a class="dropdown-item" href="./funcionarioInserir.php">New around here? Sign up</a>
+  <a class="dropdown-item" href="./index.php">Voltar para o menu</a>
+</div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     </body>
 </html>
