@@ -6,7 +6,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </head>
 <body>
-<div class="p-3 mb-2 bg-secondary text-white">
+<div class="p-3 mb-2 bg-secondary text-white" >
 <?php require_once('./cabecalho.php'); ?>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
@@ -27,9 +27,9 @@
            Inclusão
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="receitaInserir.php">De receitas</a></li>
+            <li><a class="dropdown-item" href="./receitaInserir.php">De receitas</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="produtoInserir.php">De produtos</a></li>
+            <li><a class="dropdown-item" href="./produtoInserir.php">De produtos</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">
