@@ -1,7 +1,7 @@
 <?php
     class Receita
     {
-        public $codReceita = "";
+        public $idReceita = "";
         public $nomeReceita = "";
         public $ingredientes = "";
         public $preparo = "";

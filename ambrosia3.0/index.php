@@ -6,4 +6,4 @@
             header('Location: ./views/index.php');
         ?>
     </body>
-</html>
+</html> 

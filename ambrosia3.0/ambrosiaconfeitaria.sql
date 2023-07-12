@@ -69,14 +69,9 @@ CREATE TABLE IF NOT EXISTS `ambrosias_receitas` (
 
 CREATE TABLE `ambrosiaconfeitaria`.`ambrosias_funcionarios` (
       `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
-      `nome` VARCHAR( 50 ) NOT NULL ,
       `email` VARCHAR( 100 ) NOT NULL ,
       `salt` VARCHAR( 40 ) NOT NULL ,
       `hash_senha` VARCHAR( 40 ) NOT NULL ,
-      `nivel` INT(1) UNSIGNED NOT NULL DEFAULT '1',
-      `cadastro` DATETIME NOT NULL ,
       PRIMARY KEY (`id`),
-      UNIQUE KEY `nome` (`nome`),
-      KEY `nivel` (`nivel`)
   ) ENGINE=MyISAM ;
 

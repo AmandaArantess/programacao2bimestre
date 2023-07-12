@@ -3,7 +3,7 @@
     {
         public function login($email, $senha) {
             require 'conexao_bd.php';
-            require_once '../models/funcionario.php';
+            require_once '../models/funcionario.php'; 
             require_once '../Helpers/funcoes.php';
 
             $sql = "SELECT * FROM tb_funcionario where  email=? LIMIT 1";

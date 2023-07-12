@@ -1,7 +1,7 @@
 -- phpMyAdmin SQL Dump
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
---
+-- 
 -- Host: 127.0.0.1:3306
 -- Tempo de geração: 29-Abr-2023 às 20:05
 -- Versão do servidor: 8.0.31
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `ambrosias_produtos`;
 CREATE TABLE IF NOT EXISTS `ambrosias_produtos` (
-  `codProduto` int NOT NULL,
+  `codProduto` varchar(45) NOT NULL,
   `nomeProduto` varchar(30) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
   `precoProduto` decimal(10,0) NOT NULL,
   `pesoProduto` decimal(10,0) NOT NULL,
@@ -41,9 +41,6 @@ CREATE TABLE IF NOT EXISTS `ambrosias_produtos` (
 -- Extraindo dados da tabela `ambrosias_produtos`
 --
 
-INSERT INTO `ambrosias_produtos` (`codProduto`, `nomeProduto`, `precoProduto`, `pesoProduto`, `descricaoProduto`) VALUES
-(0, '', '0', '0', '');
-
 -- --------------------------------------------------------
 
 --
@@ -52,7 +49,7 @@ INSERT INTO `ambrosias_produtos` (`codProduto`, `nomeProduto`, `precoProduto`, `
 
 DROP TABLE IF EXISTS `ambrosias_receitas`;
 CREATE TABLE IF NOT EXISTS `ambrosias_receitas` (
-  `idReceita` int NOT NULL,
+  `idReceita` varchar(45) NOT NULL,
   `nomeReceita` varchar(30) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
   `ingredientes` text CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
   `preparo` text CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
@@ -64,10 +61,6 @@ CREATE TABLE IF NOT EXISTS `ambrosias_receitas` (
 -- Extraindo dados da tabela `ambrosias_receitas`
 --
 
-INSERT INTO `ambrosias_receitas` (`idReceita`, `nomeReceita`, `ingredientes`, `preparo`, `comentarios`) VALUES
-(1, 'brigadeiro', 'chocolate 50 por cento\r\nleite condensado\r\ncreme de leite\r\ngranulado\r\nforminhas de papel', 'Adicione o leite condensdo, o creme de leite e o chocolate na panela, mexa até desgrudar. \r\nReserve.\r\nApós esfriar, separe 35g do brigadeiro, o enrole e passe no granulado. Coloque-o na forma e está pronto!\r\n', 'campeão de vendas!');
-COMMIT;
-
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
@@ -75,15 +68,12 @@ COMMIT;
 DROP TABLE IF EXISTS `ambrosias_funcionarios`;
 CREATE TABLE IF NOT EXISTS `ambrosias_funcionarios` (
       `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
-      `nome` VARCHAR( 50 ) NOT NULL ,
       `email` VARCHAR( 100 ) NOT NULL ,
       `salt` VARCHAR( 40 ) NOT NULL ,
       `hash_senha` VARCHAR( 40 ) NOT NULL ,
+      PRIMARY KEY (`id`)),
       
-      PRIMARY KEY (`id`),
-      UNIQUE KEY `nome` (`nome`),
-      KEY `nivel` (`nivel`)
-  ) ENGINE=MyISAM ;
-
-INSERT INTO `ambrosias_funcionarios` (`id`, `nome`, `email`, `salt`, `hash_senha`, `nivel`, `cadastro`) VALUES
- (1, 'amanda', 'usuario@teste.com.br', '', '', 1, 1);
+      
+ALTER TABLE `ambrosias_funcionarios`
+  ADD PRIMARY KEY (`id`);
+COMMIT;

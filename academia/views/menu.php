@@ -26,5 +26,5 @@
                 include("retorna_usuario_logado.php");
             ?>
         </div>
-    </div>
+    </div> 
 </nav>

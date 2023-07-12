@@ -20,11 +20,10 @@
             //Se a consulta por id retornou algum registro
             if ($row) {
                 //Instancia uma nova receita e preenche as propriedades da mesma com os valores dos campos retornados
-                $funcionario = new funcionario();
+                $funcionario = new Funcionario();
 
                 $funcionario->id = $row['id'];
                 $funcionario->email = $row['email'];
-         
                 $funcionario->salt = $row['salt'];
                 $funcionario->hash_senha = $row['hash_senha'];
 
@@ -50,7 +49,7 @@
             values 
             (:id,:email,:salt,:hash_senha)');
             
-            $obj = new funcionario();
+            $obj = new Funcionario();
 
             if (!$obj->id)
                 $obj->id = GUID();
@@ -58,32 +57,28 @@
             $obj->salt = GUID();
 
             $obj->email = $email;
-         
             $obj->hash_senha = Bcrypt($senha, $obj->salt);
 
             $stmt->bindValue(':id', $obj->id);
             $stmt->bindValue(':email', $obj->email);
-         
             $stmt->bindValue(':salt', $obj->salt);
             $stmt->bindValue(':hash_senha', $obj->hash_senha);
             
             $stmt->execute();
         }
 
-        public function alterar(funcionario $obj) {
+        public function alterar(Funcionario $obj) {
             require_once 'conexao_bd.php';
             require_once '../models/funcionario.php';
     
             $stmt = $conn->prepare('UPDATE ambrosias_funcionarios SET
                 email =:email,
-                
                 salt = :salt, 
                 hash_senha = :hash_senha 
                  WHERE id = :id');
             
             $stmt->bindValue(':id', $obj->id);
             $stmt->bindValue(':email', $obj->email);
-        
             $stmt->bindValue(':salt', $obj->salt);
             $stmt->bindValue(':hash_senha', $obj->hash_senha);
             
@@ -116,7 +111,7 @@
             //Se a consulta por id retornou algum registro
             if ($row) {
                 //Instancia uma nova receita e preenche as propriedades da mesma com os valores dos campos retornados
-                $obj = new funcionario();
+                $obj = new Funcionario();
 
                 $obj->id = $row['id'];
                 $obj->email = $row['email'];
@@ -143,11 +138,10 @@
             //Se a consulta por id retornou algum registro
             if ($row) {
                 //Instancia uma nova receita e preenche as propriedades da mesma com os valores dos campos retornados
-                $obj = new funcionario();
+                $obj = new Funcionario();
 
                 $obj->id = $row['id'];
                 $obj->email = $row['email'];
-      
                 $obj->salt = $row['salt'];
                 $obj->hash_senha = $row['hash_senha'];
             }
