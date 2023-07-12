@@ -2,21 +2,21 @@
 <?php include("checarLogin.php") ?>
 <html lang="pt-br">
     <header>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     </header>
     <body>
         <?php require_once './menu.php' ?>
 
-        <h1>produtos</h1>
+        <h1>Produtos</h1>
 
         <a class="btn btn-primary" href="./produtoInserir.php">Inserir</a>
         
         <table class="table">
             <thead>
-                <th>Codigo Produto</th>
-                <th>Nome Produto</th>
-                <th>Preço Produto</th>
-                <th>Peso Produto</th>
-                <th>Descrição Produto</th>
+                <th>Nome</th>
+                <th>Preço</th>
+                <th>Peso</th>
+                <th>Descrição</th>
                 <th></th>
             </thead>
             <tbody>
@@ -30,12 +30,10 @@
 
                     foreach($objetos as $obj) {
                         echo '<tr>
-                            <td>' . $obj->codProduto . '</td>
                             <td>' . $obj->nomeProduto . '</td>
-                            <td>' . $obj->precoProduto . '</td>
-                            <td>' . $obj->pesoProduto . '</td>
-                            <td>' . $obj->descricaoProduto . '</td>
-
+                            <td>' . $obj->preco . '</td>
+                            <td>' . $obj->peso . '</td>
+                            <td>' . $obj->descricao . '</td>
 
                             <td>
                                 <a class="btn btn-secondary" href="./produtoConsultar.php?id=' . $obj->id . '">Consultar</a>

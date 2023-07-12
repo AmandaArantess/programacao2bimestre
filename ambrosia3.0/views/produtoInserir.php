@@ -2,6 +2,7 @@
 <?php include("checarLogin.php") ?>
 <html lang="pt-br">
     <header>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     </header>
     <body>
         <?php require_once './menu.php' ?>
@@ -14,14 +15,12 @@
                 //Instancia uma nova receita
                 $obj = new Produto();
 
-                $obj->codProduto=$_POST["codProduto"];
-                $obj->nomeProduto=$_POST["nomeProduto"];
-                $obj->precoProduto=$_POST["precoProduto"];
-                $obj->pesoProduto=$_POST["pesoProduto"];
-                $obj->descricaoProduto=$_POST["descricaoProduto"];
+                $obj->nome=$_POST["nomeProduto"];
+                $obj->preco=$_POST["precoProduto"];
+                $obj->peso=$_POST["pesoProduto"];
+                $obj->descricao=$_POST["descricaoProduto"];
 
-                $dao = new ProdutoDAO();
-
+                $dao = new produtoDAO();
 
                 $dao->inserir($obj);
 
@@ -29,18 +28,19 @@
             }
         ?>
 
-        <h2>Inserindo produto</h2>
+        <h2>Inserindo Aluno</h2>
 
         <form class="m-3" action="produtoInserir.php" name="formulario_postado" method="post">            
             <?php
                 require "../DAOs/produtoDAO.php";
                 require "./controles.php";
 
-                input('codProduto', 'Codigo Produto', '', false, "text");
-                input('nomeProduto', 'Nome Produto', '', false, "text");
-                input('precoProduto', 'Preço Produto', '', false, "text");
-                input('pesoProduto', 'Peso Produto', '', false, "text");
-                input('descricaoProduto', 'Descrição Produto', '', false, "text");
+                input('nome', 'Nome', $obj->nomeProduto, false, "text");
+                input('preco', 'Preço', $obj->preco, false, "text");
+                input('peso', 'Peso', $obj->peso, false, "text");
+                input('descricao', 'Descrição', $obj->descricao, false, "text");
+               
+            
             ?>
             <button class="btn btn-success">Salvar</button>
             <a class="btn btn-secondary" href="./produtoListar.php">Voltar</a>

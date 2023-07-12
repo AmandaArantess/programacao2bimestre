@@ -27,8 +27,8 @@ SET time_zone = "+00:00";
 -- Estrutura da tabela `ambrosias_produtos`
 --
 
-DROP TABLE IF EXISTS `ambrosias_produtos`;
-CREATE TABLE IF NOT EXISTS `ambrosias_produtos` (
+
+CREATE TABLE   `ambrosias_produtos` (
   `codProduto` int NOT NULL,
   `nomeProduto` varchar(30) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
   `precoProduto` decimal(10,0) NOT NULL,
@@ -41,15 +41,14 @@ CREATE TABLE IF NOT EXISTS `ambrosias_produtos` (
 -- Extraindo dados da tabela `ambrosias_produtos`
 --
 
-INSERT INTO `ambrosias_produtos` (`codProduto`, `nomeProduto`, `precoProduto`, `pesoProduto`, `descricaoProduto`) VALUES
-(0, '', '0', '0', '');
-
 -- --------------------------------------------------------
 
 --
 -- Estrutura da tabela `ambrosias_receitas`
 --
 
+
+/*
 DROP TABLE IF EXISTS `ambrosias_receitas`;
 CREATE TABLE IF NOT EXISTS `ambrosias_receitas` (
   `idReceita` int NOT NULL,
@@ -62,28 +61,22 @@ CREATE TABLE IF NOT EXISTS `ambrosias_receitas` (
 
 --
 -- Extraindo dados da tabela `ambrosias_receitas`
---
-
-INSERT INTO `ambrosias_receitas` (`idReceita`, `nomeReceita`, `ingredientes`, `preparo`, `comentarios`) VALUES
-(1, 'brigadeiro', 'chocolate 50 por cento\r\nleite condensado\r\ncreme de leite\r\ngranulado\r\nforminhas de papel', 'Adicione o leite condensdo, o creme de leite e o chocolate na panela, mexa até desgrudar. \r\nReserve.\r\nApós esfriar, separe 35g do brigadeiro, o enrole e passe no granulado. Coloque-o na forma e está pronto!\r\n', 'campeão de vendas!');
-COMMIT;
+--*/
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
-DROP TABLE IF EXISTS `ambrosias_funcionarios`;
-CREATE TABLE IF NOT EXISTS `ambrosias_funcionarios` (
+CREATE TABLE `ambrosiaconfeitaria`.`ambrosias_funcionarios` (
       `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
       `nome` VARCHAR( 50 ) NOT NULL ,
       `email` VARCHAR( 100 ) NOT NULL ,
       `salt` VARCHAR( 40 ) NOT NULL ,
       `hash_senha` VARCHAR( 40 ) NOT NULL ,
-      
+      `nivel` INT(1) UNSIGNED NOT NULL DEFAULT '1',
+      `cadastro` DATETIME NOT NULL ,
       PRIMARY KEY (`id`),
       UNIQUE KEY `nome` (`nome`),
       KEY `nivel` (`nivel`)
   ) ENGINE=MyISAM ;
 
-INSERT INTO `ambrosias_funcionarios` (`id`, `nome`, `email`, `salt`, `hash_senha`, `nivel`, `cadastro`) VALUES
- (1, 'amanda', 'usuario@teste.com.br', '', '', 1, 1);
