@@ -27,9 +27,8 @@ SET time_zone = "+00:00";
 -- Estrutura da tabela `ambrosias_produtos`
 --
 
-DROP TABLE IF EXISTS `ambrosias_produtos`;
-CREATE TABLE IF NOT EXISTS `ambrosias_produtos` (
-  `codProduto` varchar(45) NOT NULL,
+CREATE TABLE `ambrosias_produtos` (
+  `codProduto` varchar(50) NOT NULL,
   `nomeProduto` varchar(30) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
   `precoProduto` decimal(10,0) NOT NULL,
   `pesoProduto` decimal(10,0) NOT NULL,
@@ -47,9 +46,8 @@ CREATE TABLE IF NOT EXISTS `ambrosias_produtos` (
 -- Estrutura da tabela `ambrosias_receitas`
 --
 
-DROP TABLE IF EXISTS `ambrosias_receitas`;
-CREATE TABLE IF NOT EXISTS `ambrosias_receitas` (
-  `idReceita` varchar(45) NOT NULL,
+CREATE TABLE `ambrosias_receitas` (
+  `idReceita` varchar(50) NOT NULL,
   `nomeReceita` varchar(30) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
   `ingredientes` text CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
   `preparo` text CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
@@ -65,15 +63,11 @@ CREATE TABLE IF NOT EXISTS `ambrosias_receitas` (
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
-DROP TABLE IF EXISTS `ambrosias_funcionarios`;
-CREATE TABLE IF NOT EXISTS `ambrosias_funcionarios` (
-      `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `ambrosias_funcionarios` (
+      `id` VARCHAR( 50 ) NOT NULL,
       `email` VARCHAR( 100 ) NOT NULL ,
       `salt` VARCHAR( 40 ) NOT NULL ,
       `hash_senha` VARCHAR( 40 ) NOT NULL ,
-      PRIMARY KEY (`id`)),
+      PRIMARY KEY (`id`))
       
       
-ALTER TABLE `ambrosias_funcionarios`
-  ADD PRIMARY KEY (`id`);
-COMMIT;

@@ -3,13 +3,9 @@
 <header>
     </header>
     <body>
-        <?php require_once './menu.php' ?>
         <?php 
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                include_once '../models/produto.php';
-                include_once '../models/receita.php';
-
-                include_once '../DAOs/funcionarioDAO.php';
+                require '../DAOs/funcionarioDAO.php';
 
                 $email=$_POST["email"];
                 $senha=$_POST["senha"];
@@ -19,6 +15,8 @@
                 header('Location: ./index.php');
             }
         ?>
+
+        <?php require_once './menu.php' ?>
 
         <h2>Criar Conta</h2>
 

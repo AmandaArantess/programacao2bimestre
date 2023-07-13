@@ -3,25 +3,22 @@
     <header>
     </header>
     <body>
-        <?php require_once './menu.php' ?>
-
         <?php 
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                include_once '../daos/funcionarioDAO.php';
+                include_once '../DAOs/funcionarioDAO.php';
 
                 $email=$_POST["email"];
                 $senha=$_POST["senha"];
-
+                
                 $dao = new funcionarioDAO();
                 
                 $login = $dao->login($email, $senha);
 
                 if ($login) {
-                    // header('Location: ./erro.php?mensagem=Login efetuado com sucesso!');
                     @session_start();
 
                     $_SESSION['login'] = $email;
-                    $_SESSION['idfuncionario'] = $login->id;
+                    $_SESSION['idUsuario'] = $login->id;
                     header('Location: index.php'); 
                 } else {
                     header('Location: ./erro.php?mensagem=Usuário ou senha inválidos!');
@@ -29,11 +26,13 @@
             }
         ?>
 
+        <?php require_once './menu.php' ?>
+
         <h2>Login</h2>
 
         <form class="m-3" action="funcionarioLogin.php" name="formulario_postado" method="post">            
+            <h1>Teste</h1>
             <?php
-                require "../DAOs/funcionarioDAO.php";
                 require "./controles.php";
 
                 input('email', 'E-mail', '', false, "text");
