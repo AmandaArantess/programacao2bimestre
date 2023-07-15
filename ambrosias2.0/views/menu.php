@@ -81,6 +81,11 @@
         <li class="nav-item">
           <a class="nav-link" href="quemSomos.php">Quem somos</a>
         </li>
+        <li class="nav-item" class="text-white bg-dark">
+        <?php
+                include("retorna_usuario_logado.php");
+            ?> 
+        </li>
       </ul>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -90,9 +95,7 @@
   </div>
 </nav>
 </div>
-            <?php
-                include("retorna_usuario_logado.php");
-            ?>
+
             <!--
           </body>
 </html>    -->
