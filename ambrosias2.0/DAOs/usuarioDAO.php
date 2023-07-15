@@ -1,37 +1,35 @@
 <?php
-    class funcionarioDAO
+    class usuarioDAO
     {
         public function login($email, $senha) {
             require 'conexao_bd.php';
-            require_once '../models/funcionario.php';
+            require_once '../models/usuario.php';
             require_once '../Helpers/funcoes.php';
-            
-        
 
-            $sql = "SELECT * FROM ambrosias_funcionarios where  email=? LIMIT 1";
+            $sql = "SELECT * FROM tb_usuario where  email=? LIMIT 1";
     
             $stmt = $conn->prepare($sql); 
             $stmt->execute([$email]); 
             $row = $stmt->fetch();
             
             //O objeto a ser retornado recebe NULL
-            $funcionario = NULL;
+            $usuario = NULL;
             
             //Se a consulta por id retornou algum registro
             if ($row) {
                 //Instancia uma nova receita e preenche as propriedades da mesma com os valores dos campos retornados
-                $funcionario = new Funcionario();
+                $usuario = new Usuario();
 
-                $funcionario->id = $row['id'];
-                $funcionario->email = $row['email'];
-                $funcionario->salt = $row['salt'];
-                $funcionario->hash_senha = $row['hash_senha'];
+                $usuario->id = $row['id'];
+                $usuario->email = $row['email'];
+                $usuario->salt = $row['salt'];
+                $usuario->hash_senha = $row['hash_senha'];
 
-                if (Bcrypt($senha, $funcionario->salt) == $funcionario->hash_senha) {
-                    $funcionario->salt = "";
-                    $funcionario->hash_senha = "";
+                if (Bcrypt($senha, $usuario->salt) == $usuario->hash_senha) {
+                    $usuario->salt = "";
+                    $usuario->hash_senha = "";
 
-                    return $funcionario;
+                    return $usuario;
                 } else {
                     return NULL;
                 }
@@ -42,14 +40,14 @@
 
         public function inserir($email, $senha) {
             require_once 'conexao_bd.php';
-            require_once '../models/funcionario.php';
+            require_once '../models/usuario.php';
             require_once '../Helpers/funcoes.php';
     
-            $stmt = $conn->prepare('INSERT INTO  ambrosias_funcionarios (id,email,salt,hash_senha) 
+            $stmt = $conn->prepare('INSERT INTO  tb_usuario (id,email,salt,hash_senha) 
             values 
             (:id,:email,:salt,:hash_senha)');
             
-            $obj = new Funcionario();
+            $obj = new Usuario();
 
             if (!$obj->id)
                 $obj->id = GUID();
@@ -67,11 +65,11 @@
             $stmt->execute();
         }
 
-        public function alterar(Funcionario $obj) {
+        public function alterar(Usuario $obj) {
             require_once 'conexao_bd.php';
-            require_once '../models/funcionario.php';
+            require_once '../models/usuario.php';
     
-            $stmt = $conn->prepare('UPDATE ambrosias_funcionarios SET
+            $stmt = $conn->prepare('UPDATE tb_usuario SET
                 email =:email,
                 salt = :salt, 
                 hash_senha = :hash_senha 
@@ -88,7 +86,7 @@
         public function excluir($id) {
             require_once 'conexao_bd.php';
             
-            $stmt = $conn->prepare('DELETE FROM  ambrosias_funcionarios WHERE id = :id');
+            $stmt = $conn->prepare('DELETE FROM  tb_usuario WHERE id = :id');
             
             $stmt->bindValue(':id', $id);
             
@@ -97,9 +95,9 @@
 
         public function retornarPorId(string $id) {
             require_once 'conexao_bd.php';
-            require_once '../Models/funcionario.php';
+            require_once '../Models/usuario.php';
             
-            $sql = "SELECT * FROM ambrosias_funcionarios where  id=? LIMIT 1";
+            $sql = "SELECT * FROM tb_usuario where  id=? LIMIT 1";
     
             $stmt = $conn->prepare($sql); 
             $stmt->execute([$id]); 
@@ -111,7 +109,7 @@
             //Se a consulta por id retornou algum registro
             if ($row) {
                 //Instancia uma nova receita e preenche as propriedades da mesma com os valores dos campos retornados
-                $obj = new Funcionario();
+                $obj = new Usuario();
 
                 $obj->id = $row['id'];
                 $obj->email = $row['email'];
@@ -124,9 +122,9 @@
 
         public function retornarPorEmail(string $email) {
             require_once 'conexao_bd.php';
-            require_once '../Models/funcionario.php';
+            require_once '../Models/usuario.php';
             
-            $sql = "SELECT * FROM ambrosias_funcionarios where  email=? LIMIT 1";
+            $sql = "SELECT * FROM tb_usuario where  email=? LIMIT 1";
     
             $stmt = $conn->prepare($sql); 
             $stmt->execute([$email]); 
@@ -138,7 +136,7 @@
             //Se a consulta por id retornou algum registro
             if ($row) {
                 //Instancia uma nova receita e preenche as propriedades da mesma com os valores dos campos retornados
-                $obj = new Funcionario();
+                $obj = new Usuario();
 
                 $obj->id = $row['id'];
                 $obj->email = $row['email'];

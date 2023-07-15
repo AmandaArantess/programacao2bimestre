@@ -1,5 +1,5 @@
 <?php
-    class Funcionario
+    class Usuario
     {
         public $id = "";
         public $email = "";

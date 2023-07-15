@@ -63,11 +63,11 @@ CREATE TABLE `ambrosias_receitas` (
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
-CREATE TABLE `ambrosias_funcionarios` (
-      `id` VARCHAR( 50 ) NOT NULL,
-      `email` VARCHAR( 100 ) NOT NULL ,
-      `salt` VARCHAR( 40 ) NOT NULL ,
-      `hash_senha` VARCHAR( 40 ) NOT NULL ,
-      PRIMARY KEY (`id`))
-      
+CREATE TABLE `ambrosiaconfeitaria`.`tb_usuario` (
+  `Id` VARCHAR(50) NOT NULL,
+  `email` VARCHAR(100) NULL,
+  `salt` VARCHAR(45) NULL,
+  `hash_senha` VARCHAR(100) NULL,
+  PRIMARY KEY (`Id`));
+
       

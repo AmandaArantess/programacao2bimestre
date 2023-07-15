@@ -7,8 +7,8 @@
 
         <h2>Acesso não autorizado!</h2>
 
-        <a href="./funcionarioLogin.php">Login</a>
-        <a href="./funcionarioInserir.php">Cadastro</a>
+        <a href="./usuarioLogin.php">Login</a>
+        <a href="./usuarioInserir.php">Cadastro</a>
 
     </body>
 </html>
