@@ -17,6 +17,7 @@
                 <th>Preço</th>
                 <th>Peso</th>
                 <th>Descrição</th>
+
                 <th></th>
             </thead>
             <tbody>
@@ -31,14 +32,15 @@
                     foreach($objetos as $obj) {
                         echo '<tr>
                             <td>' . $obj->nomeProduto . '</td>
-                            <td>' . $obj->preco . '</td>
-                            <td>' . $obj->peso . '</td>
-                            <td>' . $obj->descricao . '</td>
+                            <td>' . $obj->precoProduto . '</td>
+                            <td>' . $obj->pesoProduto . '</td>
+                            <td>' . $obj->descricaoProduto . '</td>
+
 
                             <td>
-                                <a class="btn btn-secondary" href="./produtoConsultar.php?id=' . $obj->id . '">Consultar</a>
-                                <a class="btn btn-warning" href="./produtoAlterar.php?id=' . $obj->id . '">Alterar</a>
-                                <a class="btn btn-danger" href="./produtoExcluir.php?id=' . $obj->id . '">Excluir</a>
+                                <a class="btn btn-secondary" href="./produtoConsultar.php?id=' . $obj->codProduto . '">Consultar</a>
+                                <a class="btn btn-warning" href="./produtoAlterar.php?id=' . $obj->codProduto . '">Alterar</a>
+                                <a class="btn btn-danger" href="./produtoExcluir.php?id=' . $obj->codProduto . '">Excluir</a>
                             </td>
                         </tr>';
                     }

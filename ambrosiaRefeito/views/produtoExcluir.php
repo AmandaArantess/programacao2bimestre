@@ -9,15 +9,15 @@
 
         <?php 
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                include_once '../daos/produtoDAO.php';
+                include_once '../daos/alunoDAO.php';
 
-                $cod=$_POST["cod"];
+                $id=$_POST["id"];
                 
-                $dao = new produtoDAO();
+                $dao = new alunoDAO();
 
-                $dao->excluir($cod);
+                $dao->excluir($id);
 
-                header('Location: ./produtoListar.php');
+                header('Location: ./alunoListar.php');
             }
         ?>
 
@@ -27,23 +27,25 @@
                 require "../DAOs/produtoDAO.php";
                 require "./controles.php";
 
-                $cod = $_GET["cod"];
+                $codProduto = $_GET["codProduto"];
 
                 $dao = new produtoDAO();
 
-                $obj = $dao->retornarPorCod($cod);
+                $obj = $dao->retornarPorcodProduto($codProduto);
                 
                 if ($obj) {
-                    input('nome', 'Nome', $obj->nomeProduto, true, "text");
-                    input('preco', 'Preço', $obj->preco, true, "text");
-                    input('peso', 'Peso', $obj->peso, true, "text");
-                    input('descricao', 'Descrição', $obj->descricao, true, "text");
+
+                    input('nomeProduto', 'Nome Produto', $obj->nomeproduto, true, "text");
+                    input('precoProduto', 'Preço produto', $obj->precoProduto, true, "number");
+                    input('pesoProduto', 'Peso produto', $obj->pesoProduto, true, "number");
+                    input('descricaoProduto', 'Descrição produto', $obj->descricaoProduto, true, "text");
+
                 }
                 else {
                     echo "<p>Produto não encontrado.</p>";
                 }
 
-                echo '<input type="hidden" name="cod" value="' . $cod . '">';
+                echo '<input type="hidden" name="codProduto" value="' . $codProduto . '">';
                 
             ?>
             <button class="btn btn-danger">Excluir</button>

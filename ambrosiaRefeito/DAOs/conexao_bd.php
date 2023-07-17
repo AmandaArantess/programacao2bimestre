@@ -5,7 +5,7 @@
 $hostname = 'localhost';
 $username = 'root';
 $password = '';
-$database = 'ambrosiaconfeitaria';
+$database = 'bd_ambrosia';
 try {
     // cria o objeto PDO de conexão com o servidor de banco de dados 
     $conn = new PDO("mysql:host=$hostname;dbname=$database;charset=utf8", $username, $password,

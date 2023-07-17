@@ -6,19 +6,18 @@
             require_once '../models/produto.php';
             require_once '../Helpers/funcoes.php';
     
-            $stmt = $conn->prepare('INSERT INTO  ambrosias_produtos (codProduto,nomeProduto,precoProduto,pesoProduto,descricaoProduto) 
+            $stmt = $conn->prepare('INSERT INTO  tb_produto (codProduto,nomeProduto,precoProduto,pesoProduto,descricaoProduto) 
             values 
             (:codProduto,:nomeProduto,:precoProduto,:pesoProduto,:descricaoProduto)');
             
             if (!$obj->codProduto)
-                $obj->codProduto = GUcodProduto();
+                $obj->codProduto = GUID();
 
             $stmt->bindValue(':codProduto', $obj->codProduto);
             $stmt->bindValue(':nomeProduto', $obj->nomeProduto);
             $stmt->bindValue(':precoProduto', $obj->precoProduto);
             $stmt->bindValue(':pesoProduto', $obj->pesoProduto);
             $stmt->bindValue(':descricaoProduto', $obj->descricaoProduto);
-
             
             $stmt->execute();
         }
@@ -27,11 +26,12 @@
             require_once 'conexao_bd.php';
             require_once '../models/produto.php';
     
-            $stmt = $conn->prepare('UPDATE ambrosias_produtos SET
+            $stmt = $conn->prepare('UPDATE tb_produto SET
                 nomeProduto =:nomeProduto,
-                precoProduto = :precoProduto, 
-                pesoProduto = :pesoProduto,
-                descricaoProduto = :descricaoProduto
+                precoProduto =:precoProduto,
+                pesoProduto =:pesoProduto,
+                descricaoProduto =:descricaoProduto
+                
                  WHERE codProduto = :codProduto');
             
             $stmt->bindValue(':codProduto', $obj->codProduto);
@@ -47,7 +47,7 @@
         public function excluir($codProduto) {
             require_once 'conexao_bd.php';
             
-            $stmt = $conn->prepare('DELETE FROM  ambrosias_produtos WHERE codProduto = :codProduto');
+            $stmt = $conn->prepare('DELETE FROM  tb_produto WHERE codProduto = :codProduto');
             
             $stmt->bindValue(':codProduto', $codProduto);
             
@@ -56,9 +56,9 @@
 
         public function retornarPorcodProduto(string $codProduto) {
             require_once 'conexao_bd.php';
-            require_once '../Models/aluno.php';
+            require_once '../Models/produto.php';
             
-            $sql = "SELECT * FROM ambrosias_produtos where  codProduto=? LIMIT 1";
+            $sql = "SELECT * FROM tb_produto where  codProduto=? LIMIT 1";
     
             $stmt = $conn->prepare($sql); 
             $stmt->execute([$codProduto]); 
@@ -67,7 +67,7 @@
             //O objeto a ser retornado recebe NULL
             $obj = NULL;
             
-            //Se a consulta por codProduto retornou algum registro
+            //Se a consulta por id retornou algum registro
             if ($row) {
                 //Instancia uma nova receita e preenche as propriedades da mesma com os valores dos campos retornados
                 $obj = new Produto();
@@ -87,7 +87,7 @@
             require_once 'conexao_bd.php';
             require_once '../models/produto.php';
             
-            $sql = "SELECT * FROM ambrosias_produtos ORDER BY nomeProduto";
+            $sql = "SELECT * FROM tb_produto ORDER BY nomeProduto";
             
             //Cria um novo vetor
             $objects = array();
@@ -102,7 +102,6 @@
                 $obj->precoProduto = $row['precoProduto'];
                 $obj->pesoProduto = $row['pesoProduto'];
                 $obj->descricaoProduto = $row['descricaoProduto'];
-
 
                 //Adiciona o objeto ($obj) ao vetor de objetos
                 $objects[] = $obj;

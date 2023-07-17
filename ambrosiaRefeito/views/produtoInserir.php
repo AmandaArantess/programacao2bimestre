@@ -15,10 +15,10 @@
                 //Instancia uma nova receita
                 $obj = new Produto();
 
-                $obj->nome=$_POST["nomeProduto"];
-                $obj->preco=$_POST["precoProduto"];
-                $obj->peso=$_POST["pesoProduto"];
-                $obj->descricao=$_POST["descricaoProduto"];
+                $obj->nomeProduto=$_POST["nomeProduto"];
+                $obj->precoProduto=$_POST["precoProduto"];
+                $obj->pesoProduto=$_POST["pesoProduto"];
+                $obj->descricaoProduto=$_POST["descricaoProduto"];
 
                 $dao = new produtoDAO();
 
@@ -28,19 +28,18 @@
             }
         ?>
 
-        <h2>Inserindo Aluno</h2>
+        <h2>Inserindo Produto</h2>
 
         <form class="m-3" action="produtoInserir.php" name="formulario_postado" method="post">            
             <?php
                 require "../DAOs/produtoDAO.php";
                 require "./controles.php";
 
-                input('nome', 'Nome', $obj->nomeProduto, false, "text");
-                input('preco', 'Preço', $obj->preco, false, "text");
-                input('peso', 'Peso', $obj->peso, false, "text");
-                input('descricao', 'Descrição', $obj->descricao, false, "text");
-               
-            
+                input('nomeProduto', 'Nome produto', '', false, "text");
+                input('precoProduto', 'Preço produto', '', false, "number");
+                input('pesoProduto', 'Peso produto', '', false, "number");
+                input('descricaoProduto', 'descricaoProduto', '', false, "text");
+
             ?>
             <button class="btn btn-success">Salvar</button>
             <a class="btn btn-secondary" href="./produtoListar.php">Voltar</a>

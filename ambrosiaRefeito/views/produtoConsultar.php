@@ -14,20 +14,22 @@
                 require "../DAOs/produtoDAO.php";
                 require "./controles.php";
 
-                $cod = $_GET["cod"];
+                $codProduto = $_GET["codProduto"];
 
                 $dao = new produtoDAO();
 
-                $obj = $dao->retornarPorCod($cod);
+                $obj = $dao->retornarPorcodProduto($codProduto);
                 
                 if ($obj) {
-                    input('nome', 'Nome', $obj->nomeProduto, true, "text");
-                    input('preco', 'Preço', $obj->preco, true, "text");
-                    input('peso', 'Peso', $obj->peso, true, "text");
-                    input('descricao', 'Descrição', $obj->descricao, true, "text");
+
+                    input('nomeProduto', 'Nome Produto', $obj->nomeProduto, true, "text");
+                    input('precoProduto', 'Preço produto', $obj->precoProduto, true, "number");
+                    input('pesoProduto', 'Peso produto', $obj->pesoProduto, true, "number");
+                    input('descricaoProduto', 'Descrição', $obj->descricaoProduto, true, "text");
+
                 }
                 else {
-                    echo "<p>Produto não encontrado.</p>";
+                    echo "<p>produto não encontrado.</p>";
                 }
                 
             ?>

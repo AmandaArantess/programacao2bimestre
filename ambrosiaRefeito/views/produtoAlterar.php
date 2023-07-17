@@ -17,22 +17,17 @@
                 if (!isset($_POST) || empty($_POST)) {
                     $mensagensErro = "Nada foi postado!";
                 }
-                else {
-
-                    $nomeProduto = $_POST["dias_contratados"];
-
-                    if (!is_numeric($nomeProduto)) {
-                        $mensagensErro = "O campo 'Nome do Produto' precisa ser preenchido.";
-                    }
+                
                     else {
-                        //Instancia uma nova produto
+                        //Instancia uma nova receita
                         $obj = new Produto();
 
-                        $obj->cod=$_POST["codProduto"];
-                        $obj->preco=$_POST["precoProduto"];
-                        $obj->peso=$_POST["pesoProduto"];
-                        $obj->descricao=$_POST["descricaoProduto"];
-                        $obj->nomeProduto=$nomeProduto;
+                        $obj->codProduto=$_POST["codProduto"];
+                        $obj->nomeProduto=$_POST["nomeProduto"];
+                        $obj->precoProduto=$_POST["precoProduto"];
+                        $obj->pesoProduto=$_POST["pesoProduto"];
+                        $obj->descricaoProduto=$_POST["descricaoProduto"];
+
 
                         $dao = new produtoDAO();
 
@@ -45,7 +40,7 @@
                         header('Location: ./erro.php?mensagem=' . $mensagensErro);
                     }
                 }
-            }
+            
         ?>
 
         <h2>Alterando Produto</h2>
@@ -55,28 +50,28 @@
                 require_once "../DAOs/produtoDAO.php";
                 require_once "./controles.php";
 
-                $id = $_GET["id"];
+                $id = $_GET["codProduto"];
 
                 $dao = new produtoDAO();
 
-                $obj = $dao->retornarPorCod($cod);
+                $obj = $dao->retornarPorcodProduto($codProduto);
                 
                 if ($obj) {
-                    input('nome', 'Nome', $obj->nomeProduto, false, "text");
-                    input('preco', 'Preço', $obj->preco, false, "text");
-                    input('peso', 'Peso', $obj->peso, false, "text");
-                    input('descricao', 'Descrição', $obj->descricao, false, "text");
+                    input('nomeProduto', 'Nome Produto', $obj->nomeProduto, false, "text");
+                    input('precoProduto', 'Preço Produto', $obj->precoProduto, false, "number");
+                    input('pesoProduto', 'Peso Produto', $obj->pesoProduto, false, "number"); 
+                    input('descricao', 'Descrição Produto', $obj->descricaoProduto, false, "text");
 
                 }
                 else {
                     echo "<p>Produto não encontrado.</p>";
                 }
 
-                echo '<input type="hidden" name="id" value="' . $cod . '">';
+                echo '<input type="hidden" name="codProduto" value="' . $codProduto . '">';
                 
             ?>
             <button class="btn btn-success">Salvar</button>
-            <a class="btn btn-secondary" href="./Listar.php">Voltar</a>
+            <a class="btn btn-secondary" href="./produtoListar.php">Voltar</a>
         </form>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
