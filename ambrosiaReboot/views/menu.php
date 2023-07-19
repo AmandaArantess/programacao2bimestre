@@ -15,7 +15,9 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="./produtoListar.php">Produto</a></li>
+                        <li><a class="dropdown-item" href="./receitaListar.php">Receita</a></li>
                     </ul>
+                 
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="./usuarioInserir.php">Criar Conta</a>

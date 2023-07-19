@@ -7,17 +7,17 @@
     <body>
         <?php require_once './menu.php' ?>
 
-        <h1>receita</h1>
+        <h1>receitas</h1>
 
         <a class="btn btn-primary" href="./receitaInserir.php">Inserir</a>
         
         <table class="table">
             <thead>
-                <th>Codigo Receita</th>
-                <th>Nome receita</th>
+                <th>Nome</th>
                 <th>Ingredientes</th>
                 <th>Preparo</th>
-                <th>Comentários</th>
+                <th>Comentario</th>
+
                 <th></th>
             </thead>
             <tbody>
@@ -31,19 +31,19 @@
 
                     foreach($objetos as $obj) {
                         echo '<tr>
-                            <td>' . $obj->codReceita . '</td>
                             <td>' . $obj->nomeReceita . '</td>
-                            <td>' . $obj->ingredientes . '</td>
-                            <td>' . $obj->preparo . '</td>
-                            <td>' . $obj->comentarios . '</td>
+                            <td>' . $obj->ingredienteReceita . '</td>
+                            <td>' . $obj->preparoReceita . '</td>
+                            <td>' . $obj->comentarioReceita . '</td>
 
 
                             <td>
-                                <a class="btn btn-secondary" href="./receitaConsultar.php?id=' . $obj->id . '">Consultar</a>
-                                <a class="btn btn-warning" href="./receitaAlterar.php?id=' . $obj->id . '">Alterar</a>
-                                <a class="btn btn-danger" href="./receitaExcluir.php?id=' . $obj->id . '">Excluir</a>
+                                <a class="btn btn-secondary" href="./receitaConsultar.php?codReceita=' . $obj->codReceita . '">Consultar</a>
+                                <a class="btn btn-warning" href="./receitaAlterar.php?codReceita=' . $obj->codReceita . '">Alterar</a>
+                                <a class="btn btn-danger" href="./receitaExcluir.php?codReceita=' . $obj->codReceita . '">Excluir</a>
                             </td>
                         </tr>';
+                        //Alterei os links acima trocando id por codReceita
                     }
                 ?>
             </tbody>

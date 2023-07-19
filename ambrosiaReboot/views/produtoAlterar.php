@@ -17,9 +17,8 @@
                 if (!isset($_POST) || empty($_POST)) {
                     $mensagensErro = "Nada foi postado!";
                 }
-                
                     else {
-                        //Instancia uma nova receita
+                        //Instancia um novo produto
                         $obj = new Produto();
 
                         $obj->codProduto=$_POST["codProduto"];

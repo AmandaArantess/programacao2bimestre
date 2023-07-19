@@ -18,7 +18,6 @@
                     $mensagensErro = "Nada foi postado!";
                 }
                 else {
-
                     $diasContratados = $_POST["dias_contratados"];
 
                     if (!is_numeric($diasContratados)) {

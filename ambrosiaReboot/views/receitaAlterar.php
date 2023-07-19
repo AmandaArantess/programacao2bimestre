@@ -15,19 +15,22 @@
                 $mensagensErro = false;
 
                 if (!isset($_POST) || empty($_POST)) {
-                    $mensagensErro = "Nenhuma receita cadastrada!";
+                    $mensagensErro = "Nada foi postado!";
                 }
+                
                     else {
                         //Instancia uma nova receita
                         $obj = new Receita();
 
-                        $obj->idReceita=$_POST["idReceita"];
+                        $obj->codReceita=$_POST["codReceita"];
                         $obj->nomeReceita=$_POST["nomeReceita"];
-                        $obj->ingredientes=$_POST["ingredientes"];
-                        $obj->preparo=$_POST["preparo"];
-                        $obj->comentarios=$_POST["comentarios"];
+                        $obj->ingredienteReceita=$_POST["ingredienteReceita"];
+                        $obj->preparoReceita=$_POST["preparoReceita"];
+                        $obj->comentarioReceita=$_POST["comentarioReceita"];
+
 
                         $dao = new receitaDAO();
+
                         $dao->alterar($obj);
 
                         header('Location: ./receitaListar.php');
@@ -37,6 +40,7 @@
                         header('Location: ./erro.php?mensagem=' . $mensagensErro);
                     }
                 }
+            
         ?>
 
         <h2>Alterando Receita</h2>
@@ -46,27 +50,29 @@
                 require_once "../DAOs/receitaDAO.php";
                 require_once "./controles.php";
 
-                $idReceita = $_GET["idReceita"];
+                //Alterei aqui
+                $codReceita = $_GET["codReceita"];
 
                 $dao = new receitaDAO();
 
-                $obj = $dao->retornarPoridReceita($idReceita);
+                $obj = $dao->retornarPorcodReceita($codReceita);
                 
                 if ($obj) {
                     input('nomeReceita', 'Nome Receita', $obj->nomeReceita, false, "text");
-                    input('ingredientes', 'Ingredientes', $obj->ingredientes, false, "text");
-                    input('preparo', 'Preparo', $obj->preparo, false, "text");
-                    input('comentarios', 'Comentarios', $obj->comentarios, false, "text");
+                    input('ingredienteReceita', 'Ingrediente Receita', $obj->ingredienteReceita, false, "text");
+                    input('preparoReceita', 'Preparo Receita', $obj->preparoReceita, false, "text"); 
+                    input('comentarioReceita', 'Comentario Receita', $obj->comentarioReceita, false, "text");
+
                 }
                 else {
-                    echo "<p>Receita não encontrado.</p>";
+                    echo "<p>Receita não encontrada.</p>";
                 }
 
-                echo '<input type="hidReceitaden" name="idReceita" value="' . $idReceita . '">';
+                echo '<input type="hidden" name="codReceita" value="' . $codReceita . '">';
                 
             ?>
             <button class="btn btn-success">Salvar</button>
-            <a class="btn btn-secondary" href="./alunoListar.php">Voltar</a>
+            <a class="btn btn-secondary" href="./receitaListar.php">Voltar</a>
         </form>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>

@@ -9,42 +9,49 @@
 
         <?php 
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                //Alterei por estar incluindo anteriormente classe inexistente
                 include_once '../daos/receitaDAO.php';
 
-                $id=$_POST["id"];
+                //Alterei aqui para ficar em acordo com a alteração e consulta
+                $codReceita=$_POST["codReceita"];
                 
+                //Alterei por estar instanciando anteriormente classe inexistente
                 $dao = new receitaDAO();
 
-                $dao->excluir($id);
+                //Alterei aqui
+                $dao->excluir($codReceita);
 
                 header('Location: ./receitaListar.php');
             }
         ?>
 
-        <h2>Excluindo receita</h2>
+        <h2>Excluindo Receita</h2>
 
         <form class="m-3" action="receitaExcluir.php" name="formulario_postado" method="post">            <?php
                 require "../DAOs/receitaDAO.php";
                 require "./controles.php";
 
-                $id = $_GET["id"];
+                $codReceita = $_GET["codReceita"];
 
                 $dao = new receitaDAO();
 
-                $obj = $dao->retornarPorId($id);
+                $obj = $dao->retornarPorcodReceita($codReceita);
                 
+
                 if ($obj) {
-                    input('codReceita', 'Codigo Receita', $obj->codReceita, true, "text");
+                     //Alterei abaixo de $obj->nomeReceita para $obj->nomeReceita
                     input('nomeReceita', 'Nome Receita', $obj->nomeReceita, true, "text");
-                    input('ingredientes', 'Ingredientes', $obj->ingredientes, true, "text");
-                    input('preparo', 'Preparo', $obj->preparo, true, "text");
-                    input('comentarios', 'Comentarios', $obj->comentarios, true, "text");
-                }
-                else {
-                    echo "<p>receita não encontrado.</p>";
+                    input('ingredienteReceita', 'Ingrediente Receita', $obj->ingredienteReceita, true, "text");
+                    input('preparoReceita', 'Preparo Receita', $obj->preparoReceita, true, "text"); 
+                    input('comentarioReceita', 'Comentario Receita', $obj->comentarioReceita, true, "text");
+
                 }
 
-                echo '<input type="hidden" name="id" value="' . $id . '">';
+                else {
+                    echo "<p>Receita não encontrada.</p>";
+                }
+
+                echo '<input type="hidden" name="codReceita" value="' . $codReceita . '">';
                 
             ?>
             <button class="btn btn-danger">Excluir</button>

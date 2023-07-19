@@ -13,13 +13,12 @@
                 include_once '../daos/receitaDAO.php';
 
                 //Instancia uma nova receita
-                $obj = new receita();
+                $obj = new Receita();
 
-                $obj->codReceita=$_POST["codReceita"];
                 $obj->nomeReceita=$_POST["nomeReceita"];
-                $obj->ingredientes=$_POST["ingredientes"];
-                $obj->preparo=$_POST["preparo"];
-                $obj->comentarios=$_POST["comentarios"];
+                $obj->ingredienteReceita=$_POST["ingredienteReceita"];
+                $obj->preparoReceita=$_POST["preparoReceita"];
+                $obj->comentarioReceita=$_POST["comentarioReceita"];
 
                 $dao = new receitaDAO();
 
@@ -29,18 +28,18 @@
             }
         ?>
 
-        <h2>Inserindo receita</h2>
+        <h2>Inserindo Receita</h2>
 
         <form class="m-3" action="receitaInserir.php" name="formulario_postado" method="post">            
             <?php
                 require "../DAOs/receitaDAO.php";
                 require "./controles.php";
 
-                input('codReceita', 'Codigo Receita', $obj->codReceita, true, "text");
-                input('nomeReceita', 'Nome Receita', $obj->nomeReceita, true, "text");
-                input('ingredientes', 'Ingredientes', $obj->ingredientes, true, "text");
-                input('preparo', 'Preparo', $obj->preparo, true, "text");
-                input('comentarios', 'Comentarios', $obj->comentarios, true, "text");
+                input('nomeReceita', 'Nome Receita', '', false, "text");
+                input('ingredienteReceita', 'Ingrediente Receita', '', false, "text");
+                input('preparoReceita', 'Preparo Receita', '', false, "text");
+                input('comentarioReceita', 'comentario Receita', '', false, "text");
+
             ?>
             <button class="btn btn-success">Salvar</button>
             <a class="btn btn-secondary" href="./receitaListar.php">Voltar</a>
