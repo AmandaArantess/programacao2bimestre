@@ -7,7 +7,7 @@
     <body>
         <?php require_once './menu.php' ?>
 
-        <h1>receitas</h1>
+        <h1>Receitas</h1>
 
         <a class="btn btn-primary" href="./receitaInserir.php">Inserir</a>
         
