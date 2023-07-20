@@ -4,7 +4,7 @@
     <header>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     </header>
-    <body>
+    <body style="background-image: url('../img/bakery.png')";>  
         <?php require_once './menu.php' ?>
 
         <?php 
@@ -42,7 +42,7 @@
             
         ?>
 
-        <h2>Alterando Produto</h2>
+        <h2 class="text-white">Alterando Produto</h2>
 
         <form class="m-3" action="produtoAlterar.php" name="formulario_postado" method="post">            
             <?php
@@ -60,7 +60,7 @@
                     input('nomeProduto', 'Nome Produto', $obj->nomeProduto, false, "text");
                     input('precoProduto', 'Preço Produto', $obj->precoProduto, false, "number");
                     input('pesoProduto', 'Peso Produto', $obj->pesoProduto, false, "number"); 
-                    input('descricao', 'Descrição Produto', $obj->descricaoProduto, false, "text");
+                    input('descricaoProduto', 'Descrição Produto', $obj->descricaoProduto, false, "text");
 
                 }
                 else {
@@ -70,7 +70,8 @@
                 echo '<input type="hidden" name="codProduto" value="' . $codProduto . '">';
                 
             ?>
-            <button class="btn btn-success">Salvar</button>
+            <button  class="btn btn-info">Salvar</button>
+           
             <a class="btn btn-secondary" href="./produtoListar.php">Voltar</a>
         </form>
 

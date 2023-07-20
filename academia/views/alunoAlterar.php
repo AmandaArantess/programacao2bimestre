@@ -71,6 +71,7 @@
                 echo '<input type="hidden" name="id" value="' . $id . '">';
                 
             ?>
+            
             <button class="btn btn-success">Salvar</button>
             <a class="btn btn-secondary" href="./alunoListar.php">Voltar</a>
         </form>

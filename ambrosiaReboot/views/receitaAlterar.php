@@ -4,7 +4,7 @@
     <header>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     </header>
-    <body>
+    <body style="background-image: url('../img/bakery.png')";>  
         <?php require_once './menu.php' ?>
 
         <?php 
@@ -43,7 +43,7 @@
             
         ?>
 
-        <h2>Alterando Receita</h2>
+        <h2 class="text-white">Alterando Receita</h2>
 
         <form class="m-3" action="receitaAlterar.php" name="formulario_postado" method="post">            
             <?php
@@ -58,11 +58,11 @@
                 $obj = $dao->retornarPorcodReceita($codReceita);
                 
                 if ($obj) {
+
                     input('nomeReceita', 'Nome Receita', $obj->nomeReceita, false, "text");
                     input('ingredienteReceita', 'Ingrediente Receita', $obj->ingredienteReceita, false, "text");
                     input('preparoReceita', 'Preparo Receita', $obj->preparoReceita, false, "text"); 
                     input('comentarioReceita', 'Comentario Receita', $obj->comentarioReceita, false, "text");
-
                 }
                 else {
                     echo "<p>Receita não encontrada.</p>";
@@ -71,7 +71,8 @@
                 echo '<input type="hidden" name="codReceita" value="' . $codReceita . '">';
                 
             ?>
-            <button class="btn btn-success">Salvar</button>
+            
+            <button class="btn btn-info">Salvar</button>
             <a class="btn btn-secondary" href="./receitaListar.php">Voltar</a>
         </form>
 

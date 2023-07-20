@@ -3,7 +3,7 @@
     <header>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     </header>
-    <body>
+    <body style="background-image: url('../img/bakery.png')";>
         <?php require_once './menu.php' ?>
 
         <?php 
@@ -30,7 +30,7 @@
             }
         ?>
 
-        <h2>Login</h2>
+        <h2 class="text-white">Login</h2>
 
         <form class="m-3" action="usuarioLogin.php" name="formulario_postado" method="post">            
             <?php
@@ -40,7 +40,7 @@
                 input('email', 'E-mail', '', false, "text");
                 input('senha', 'Senha', '', false, "password");
             ?>
-            <button class="btn btn-success">Logar</button>
+            <button class="btn btn-info">Logar</button>
             <a class="btn btn-secondary" href="./index.php">Voltar para a Página Inicial</a>
         </form>
 

@@ -4,10 +4,10 @@
     <header>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     </header>
-    <body>
+    <body style="background-image: url('../img/bakery.png')";>  
         <?php require_once './menu.php' ?>
 
-        <h2>Consultando Receita</h2>
+        <h2 class="text-white">Consultando Receita</h2>
 
         <form class="m-3">
             <?php
@@ -29,7 +29,7 @@
                 }
                 
                 else {
-                    echo "<p>Receita não encontrado.</p>";
+                    echo "<p>Receita não encontrada.</p>";
                 }
                 
             ?>

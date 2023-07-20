@@ -4,15 +4,15 @@
     <header>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     </header>
-    <body>
+    <body style="background-image: url('../img/padaria.png')";>  
         <?php require_once './menu.php' ?>
 
-        <h1>Receitas</h1>
+        <h1 class="text-white">Receitas</h1>
 
-        <a class="btn btn-primary" href="./receitaInserir.php">Inserir</a>
+        <a  type="button" class="btn btn-info" href="./receitaInserir.php">Inserir</a>
         
         <table class="table">
-            <thead>
+            <thead class="text-white">
                 <th>Nome</th>
                 <th>Ingredientes</th>
                 <th>Preparo</th>
@@ -30,7 +30,7 @@
                     $objetos = $dao->retornarTodos();
 
                     foreach($objetos as $obj) {
-                        echo '<tr>
+                        echo '<tr class="text-white">
                             <td>' . $obj->nomeReceita . '</td>
                             <td>' . $obj->ingredienteReceita . '</td>
                             <td>' . $obj->preparoReceita . '</td>
@@ -39,7 +39,7 @@
 
                             <td>
                                 <a class="btn btn-secondary" href="./receitaConsultar.php?codReceita=' . $obj->codReceita . '">Consultar</a>
-                                <a class="btn btn-warning" href="./receitaAlterar.php?codReceita=' . $obj->codReceita . '">Alterar</a>
+                                <a class="btn btn-dark" href="./receitaAlterar.php?codReceita=' . $obj->codReceita . '">Alterar</a>
                                 <a class="btn btn-danger" href="./receitaExcluir.php?codReceita=' . $obj->codReceita . '">Excluir</a>
                             </td>
                         </tr>';
